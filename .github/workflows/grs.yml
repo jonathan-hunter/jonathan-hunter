@@ -36,3 +36,11 @@ jobs:
             git commit -m "Update README cards"
             git push
           fi
+
+      - name: Generate trophy
+        continue-on-error: true                                                                      # trophy/Deno failure won't block the card commit
+        uses: Erik-Donath/github-profile-trophy@eb0893b31de06841663555d10aa43eb7cf27952f             # feature/generate-svg, pinned <date>
+        with:
+          username: ${{ github.repository_owner }}
+          output_path: profile/trophy.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
