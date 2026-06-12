@@ -34,7 +34,7 @@ jobs:
           username: ${{ github.repository_owner }}
           file: profile/trophy.svg
           theme: flat
-          max-cols: 6            # 9 trophies → 6 + 3 over two rows (matches al-folio's desktop default)
+          max-cols: 4            # 9 trophies → 6 + 3 over two rows (matches al-folio's desktop default)
           margin-width: 15
           margin-height: 15
           no-background: true
