@@ -33,6 +33,7 @@ elif [ "$mode" = dark ]; then
     -e 's/#178600/#2698ba/g' \
     -e 's/#2dde98/#2698ba/g' \
     -e 's/#0d1117/#212529/g' \
+    -e 's/fill="#333"/fill="#212529"/g' \
     -e 's/stroke="#e1e4e8"/stroke="#424246"/g' \
     -e 's/stop-color="#ff5555"/stop-color="#5fd0e0"/g' \
     -e 's/stop-color="#ff79c6"/stop-color="#2698ba"/g' \
