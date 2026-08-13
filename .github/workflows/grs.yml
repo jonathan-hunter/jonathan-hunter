@@ -68,6 +68,15 @@ jobs:
           no-background: false
           token: ${{ secrets.GH_PAT }}
 
+      # github-profile-trophy only ships fixed themes (all blue/green accented),
+      # so recolour its output to the site's purple (light) / cyan (dark)
+      # palette and card frame after generation.
+      - name: Recolour trophies to site palette
+        continue-on-error: true
+        run: |
+          bash profile/recolor-trophy.sh light profile/trophy-light.svg
+          bash profile/recolor-trophy.sh dark profile/trophy-dark.svg
+
       # Repository pin cards, themed to match the site palette (replacing the
       # unthemeable opengraph.githubassets.com banners). Two variants each so
       # the site swaps them via .only-light / .only-dark. Transparent bg +
