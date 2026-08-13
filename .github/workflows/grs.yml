@@ -19,26 +19,26 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5                               #v4
 
-      # Stats cards are themed to match the al-folio site palette rather than
+      # Stats cards are themed to match the site's teal palette rather than
       # github-readme-stats' default blue. Two variants are generated so the
       # site can swap them via its .only-light / .only-dark mechanism.
       # Background is transparent and the border is hidden — the site's
       # .github-summary-stats panel supplies the card frame per theme.
-      # Light: purple accent (#b509ac) + near-black text (#1c1c1d).
+      # Light: teal accent (#0e6c74) + near-black text (#15181b).
       - name: Generate stats card (light)
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&title_color=b509ac&icon_color=b509ac&ring_color=b509ac&text_color=1c1c1d&bg_color=00000000&hide_border=true
+          options: username=${{ github.repository_owner }}&show_icons=true&title_color=0e6c74&icon_color=0e6c74&ring_color=0e6c74&text_color=15181b&bg_color=00000000&hide_border=true
           path: profile/stats-light.svg
           token: ${{ secrets.GH_PAT }}
 
-      # Dark: cyan accent (#2698ba) + light-grey text (#c2c2c2).
+      # Dark: teal accent (#5fd2d2) + light text (#e9eae6).
       - name: Generate stats card (dark)
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&title_color=2698ba&icon_color=2698ba&ring_color=2698ba&text_color=c2c2c2&bg_color=00000000&hide_border=true
+          options: username=${{ github.repository_owner }}&show_icons=true&title_color=5fd2d2&icon_color=5fd2d2&ring_color=5fd2d2&text_color=e9eae6&bg_color=00000000&hide_border=true
           path: profile/stats-dark.svg
           token: ${{ secrets.GH_PAT }}
 
@@ -68,10 +68,10 @@ jobs:
           no-background: false
           token: ${{ secrets.GH_PAT }}
 
-      # github-profile-trophy only ships fixed themes (all blue/green accented),
-      # so recolour its output to the site's purple (light) / cyan (dark)
-      # palette and card frame after generation.
-      - name: Recolour trophies to site palette
+      # github-profile-trophy keeps its native rank palette; only re-frame the
+      # cards to the site surface (border + dark cell background) after
+      # generation so the grid sits on the same card as the stats/pin cards.
+      - name: Re-frame trophies to site card surface
         continue-on-error: true
         run: |
           bash profile/recolor-trophy.sh light profile/trophy-light.svg
@@ -86,7 +86,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: pin
-          options: username=jonathan-hunter&repo=Metabolomics-Pipeline&show_owner=true&description_lines_count=2&title_color=b509ac&icon_color=b509ac&text_color=1c1c1d&bg_color=00000000&hide_border=true
+          options: username=jonathan-hunter&repo=Metabolomics-Pipeline&show_owner=true&description_lines_count=2&title_color=0e6c74&icon_color=0e6c74&text_color=15181b&bg_color=00000000&hide_border=true
           path: profile/pin-metabolomics-pipeline-light.svg
           token: ${{ secrets.GH_PAT }}
 
@@ -95,7 +95,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: pin
-          options: username=jonathan-hunter&repo=Metabolomics-Pipeline&show_owner=true&description_lines_count=2&title_color=2698ba&icon_color=2698ba&text_color=c2c2c2&bg_color=00000000&hide_border=true
+          options: username=jonathan-hunter&repo=Metabolomics-Pipeline&show_owner=true&description_lines_count=2&title_color=5fd2d2&icon_color=5fd2d2&text_color=e9eae6&bg_color=00000000&hide_border=true
           path: profile/pin-metabolomics-pipeline-dark.svg
           token: ${{ secrets.GH_PAT }}
 
@@ -104,7 +104,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: pin
-          options: username=HUPO-PSI&repo=psi-ms-CV&show_owner=true&description_lines_count=2&title_color=b509ac&icon_color=b509ac&text_color=1c1c1d&bg_color=00000000&hide_border=true
+          options: username=HUPO-PSI&repo=psi-ms-CV&show_owner=true&description_lines_count=2&title_color=0e6c74&icon_color=0e6c74&text_color=15181b&bg_color=00000000&hide_border=true
           path: profile/pin-psi-ms-cv-light.svg
           token: ${{ secrets.GH_PAT }}
 
@@ -113,7 +113,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: pin
-          options: username=HUPO-PSI&repo=psi-ms-CV&show_owner=true&description_lines_count=2&title_color=2698ba&icon_color=2698ba&text_color=c2c2c2&bg_color=00000000&hide_border=true
+          options: username=HUPO-PSI&repo=psi-ms-CV&show_owner=true&description_lines_count=2&title_color=5fd2d2&icon_color=5fd2d2&text_color=e9eae6&bg_color=00000000&hide_border=true
           path: profile/pin-psi-ms-cv-dark.svg
           token: ${{ secrets.GH_PAT }}
 

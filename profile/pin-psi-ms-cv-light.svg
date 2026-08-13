@@ -13,7 +13,7 @@
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
-            fill: #b509ac;
+            fill: #0e6c74;
             animation: fadeInAnimation 0.8s ease-in-out forwards;
           }
           @supports(-moz-appearance: auto) {
@@ -21,9 +21,9 @@
             .header { font-size: 15.5px; }
           }
           
-    .description { font: 400 13px 'Segoe UI', Ubuntu, Sans-Serif; fill: #1c1c1d }
-    .gray { font: 400 12px 'Segoe UI', Ubuntu, Sans-Serif; fill: #1c1c1d }
-    .icon { fill: #b509ac }
+    .description { font: 400 13px 'Segoe UI', Ubuntu, Sans-Serif; fill: #15181b }
+    .gray { font: 400 12px 'Segoe UI', Ubuntu, Sans-Serif; fill: #15181b }
+    .icon { fill: #0e6c74 }
     .badge { font: 600 11px 'Segoe UI', Ubuntu, Sans-Serif; }
     .badge rect { opacity: 0.2 }
   
