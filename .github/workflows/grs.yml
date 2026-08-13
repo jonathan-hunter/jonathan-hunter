@@ -19,22 +19,50 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5                               #v4
 
-      - name: Generate stats card
+      # Stats cards are themed to match the al-folio site palette rather than
+      # github-readme-stats' default blue. Two variants are generated so the
+      # site can swap them via its .only-light / .only-dark mechanism.
+      # Background is transparent and the border is hidden — the site's
+      # .github-summary-stats panel supplies the card frame per theme.
+      # Light: purple accent (#b509ac) + near-black text (#1c1c1d).
+      - name: Generate stats card (light)
         uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
         with:
           card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
-          path: profile/stats.svg
+          options: username=${{ github.repository_owner }}&show_icons=true&title_color=b509ac&icon_color=b509ac&ring_color=b509ac&text_color=1c1c1d&bg_color=00000000&hide_border=true
+          path: profile/stats-light.svg
           token: ${{ secrets.GH_PAT }}
 
-      - name: Generate trophy
+      # Dark: cyan accent (#2698ba) + light-grey text (#c2c2c2).
+      - name: Generate stats card (dark)
+        uses: readme-tools/github-readme-stats-action@d82657a0e215a28ec48bfc9b3987999a279f93be        #v1
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&title_color=2698ba&icon_color=2698ba&ring_color=2698ba&text_color=c2c2c2&bg_color=00000000&hide_border=true
+          path: profile/stats-dark.svg
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Generate trophy (light)
         continue-on-error: true                                                                      # trophy/Deno failure won't block the card commit
         uses: Erik-Donath/github-profile-trophy@eb0893b31de06841663555d10aa43eb7cf27952f             # feature/generate-svg, pinned <date>
         with:
           username: ${{ github.repository_owner }}
-          file: profile/trophy.svg
+          file: profile/trophy-light.svg
           theme: flat
           max-cols: 4            # 9 trophies → 6 + 3 over two rows (matches al-folio's desktop default)
+          margin-width: 15
+          margin-height: 15
+          no-background: false
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Generate trophy (dark)
+        continue-on-error: true                                                                      # trophy/Deno failure won't block the card commit
+        uses: Erik-Donath/github-profile-trophy@eb0893b31de06841663555d10aa43eb7cf27952f             # feature/generate-svg, pinned <date>
+        with:
+          username: ${{ github.repository_owner }}
+          file: profile/trophy-dark.svg
+          theme: gitdimmed       # muted dark theme that sits on the site's dark card
+          max-cols: 4
           margin-width: 15
           margin-height: 15
           no-background: false
